@@ -88,9 +88,9 @@ if prompt:
             
             # Construir el contexto completo (System Prompt + Historial)
             full_messages = [SYSTEM_PROMPT] + [
-                {"role": m["role"], "content": m["content"]}
-                for m["role"], m["content"] in [(msg["role"], msg["content"]) for msg in st.session_state.messages]
-            ]
+                {"role": msg["role"], "content": msg["content"]}
+                    for msg in st.session_state.messages
+                ]
 
             # Llamada en modo Streaming
             stream = client.chat.completions.create(
